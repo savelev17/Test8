@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <cmath>
 class Point
 {
 private:
@@ -14,6 +15,10 @@ public:
     {
         std::cout << "Point(" << m_a << ", " << m_b << ")" << std::endl;
     }
+    double distanceTo(const Point& point) const
+    {
+        return sqrt((m_a - point.m_a) * (m_a - point.m_a) + (m_b - point.m_b) * (m_b - point.m_b));
+    }
 };
 int main()
 {
@@ -21,6 +26,7 @@ int main()
     Point second(2.0, 5.0);
     first.print();
     second.print();
+    std::cout << "Distance between two points: " << first.distanceTo(second) << '\n';
 
     return 0;
 }
