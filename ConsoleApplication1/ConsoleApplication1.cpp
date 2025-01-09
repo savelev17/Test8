@@ -1,33 +1,69 @@
-﻿#include <iostream>
-#include <cmath>
-class Point
+﻿#include "iostream"
+#include "string"
+enum MonsterType
 {
-private:
-    double m_a;
-    double m_b;
-public:
-    Point(double m_a = 0, double m_b = 0)
-    {
-        this->m_a = m_a;
-        this->m_b = m_b;
-    }
-    void print()
-    {
-        std::cout << "Point(" << m_a << ", " << m_b << ")" << std::endl;
-    }
-    friend double distanceFrom(const Point& point1, const Point& point2);
+	Dragon,
+	Goblin,
+	Ogre,
+	Orc,
+	Skeleton,
+	Troll,
+	Vampire,
+	Zombie,
+	MAX_MONSTER_TYPES
 };
-double distanceFrom(const Point& point1, const Point& point2)
+
+class Monster
 {
-    return sqrt((point1.m_a - point2.m_a) * (point1.m_a - point2.m_a) + (point1.m_b - point2.m_b) * (point1.m_b - point2.m_b));
-}
+public:
+	Monster(MonsterType type, std::string name, int health): m_type(type), m_name(name), m_health(health)
+	{
+	}
+	std::string getTypeString(MonsterType type)
+	{
+		switch (type)
+		{
+		case Dragon:
+			return "Dragon";
+			break;
+		case Goblin:
+			return "Goblin";
+			break;
+		case Ogre:
+			return "Ogre";
+			break;
+		case Orc:
+			return "Orc";
+			break;
+		case Skeleton:
+			return "Skeleton";
+			break;
+		case Troll:
+			return "Troll";
+			break;
+		case Vampire:
+			return "Vampire";
+			break;
+		case Zombie:
+			return "Zombie";
+			break;
+		default:
+			break;
+		}
+	}
+	void Print() 
+	{
+		std::cout << m_name << "is the " << getTypeString(m_type) << " that have " << m_health << " health points" << std::endl;
+	}
+private:
+	MonsterType m_type;
+	std::string m_name;
+	int m_health;
+};
+
 int main()
 {
-    Point first;
-    Point second(2.0, 5.0);
-    first.print();
-    second.print();
-    std::cout << "Distance between two points: " << distanceFrom(first, second) << '\n';
-
-    return 0;
+	Monster jack(MonsterType::Orc, "Jack", 90);
+	jack.Print();
+	return 0;
 }
