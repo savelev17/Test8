@@ -15,18 +15,19 @@ public:
     {
         std::cout << "Point(" << m_a << ", " << m_b << ")" << std::endl;
     }
-    double distanceTo(const Point& point) const
-    {
-        return sqrt((m_a - point.m_a) * (m_a - point.m_a) + (m_b - point.m_b) * (m_b - point.m_b));
-    }
+    friend double distanceFrom(const Point& point1, const Point& point2);
 };
+double distanceFrom(const Point& point1, const Point& point2)
+{
+    return sqrt((point1.m_a - point2.m_a) * (point1.m_a - point2.m_a) + (point1.m_b - point2.m_b) * (point1.m_b - point2.m_b));
+}
 int main()
 {
     Point first;
     Point second(2.0, 5.0);
     first.print();
     second.print();
-    std::cout << "Distance between two points: " << first.distanceTo(second) << '\n';
+    std::cout << "Distance between two points: " << distanceFrom(first, second) << '\n';
 
     return 0;
 }
