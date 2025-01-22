@@ -1,3 +1,4 @@
 ﻿  ConsoleApplication1.cpp
+E:\Проекты С++\Ravesli\Test8\Test8\ConsoleApplication1\ConsoleApplication1.cpp(76,2): warning C4091: static : пропускается слева от "MosterGenerator", когда ни одна переменная не объявлена
 E:\Проекты С++\Ravesli\Test8\Test8\ConsoleApplication1\ConsoleApplication1.cpp(53): warning C4715: Monster::getTypeString: значение возвращается не при всех путях выполнения
   ConsoleApplication1.vcxproj -> E:\Проекты С++\Ravesli\Test8\Test8\x64\Debug\ConsoleApplication1.exe

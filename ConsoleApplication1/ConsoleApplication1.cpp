@@ -19,9 +19,9 @@ public:
 	Monster(MonsterType type, std::string name, int health): m_type(type), m_name(name), m_health(health)
 	{
 	}
-	std::string getTypeString(MonsterType type)
+	std::string getTypeString()
 	{
-		switch (type)
+		switch (m_type)
 		{
 		case Dragon:
 			return "Dragon";
@@ -53,7 +53,7 @@ public:
 	}
 	void Print() 
 	{
-		std::cout << m_name << "is the " << getTypeString(m_type) << " that have " << m_health << " health points" << std::endl;
+		std::cout << m_name << " is the " << getTypeString() << " that have " << m_health << " health points" << std::endl;
 	}
 private:
 	MonsterType m_type;
@@ -61,9 +61,24 @@ private:
 	int m_health;
 };
 
+static class MosterGenerator
+{
+public:
+	static Monster generateMonster()
+	{
+		return Monster(MonsterType::Orc, "Jack", 90);
+	}
+	static int getRandomNumber(int min, int max)
+	{
+		static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
+		return static_cast<int>(rand() * fraction * (max - min + 1) + min);
+	}
+};
+
 int main()
 {
-	Monster jack(MonsterType::Orc, "Jack", 90);
-	jack.Print();
+	Monster m = MosterGenerator::generateMonster();
+	m.Print();
+
 	return 0;
 }
